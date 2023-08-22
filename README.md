@@ -5,7 +5,7 @@ Check if the Android device has the developer options enabled.
 ## Installation
 
 ```sh
-npm install react-native-developer-options-android
+npm install @adityaindiadev/react-native-developer-options-android
 ```
 
 ## Usage
