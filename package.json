@@ -41,7 +41,10 @@
     "react-native-developer-options",
     "react-native-developer-options-android"
   ],
-  "repository": "https://github.com/adityaindiadev/react-native-developer-options-android",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityaindiadev/react-native-developer-options-android.git"
+  },
   "author": "“adityaindiadev” <aditya.india.dev@gmail.com> (https://github.com/adityaindiadev)",
   "license": "MIT",
   "bugs": {
@@ -156,5 +159,8 @@
         }
       ]
     ]
+  },
+  "directories": {
+    "example": "example"
   }
 }

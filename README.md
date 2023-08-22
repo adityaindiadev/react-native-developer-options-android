@@ -11,11 +11,43 @@ npm install react-native-developer-options-android
 ## Usage
 
 ```js
-import { isDeveloperOptionsEnabled } from 'react-native-developer-options-android';
+import * as React from 'react';
 
-// ...
+import { StyleSheet, View, Text } from 'react-native';
+import { isDeveloperOptionsEnabled } from '@adityaindiadev/react-native-developer-options-android';
 
-const result = await isDeveloperOptionsEnabled(callBack);
+export default function App() {
+  const [isDeveloperOptionsOn, setIsDeveloperOptionsOn] = React.useState<boolean | undefined>();
+
+  React.useEffect(() => {
+    isDeveloperOptionsEnabled(handleResult)
+  }, []);
+
+  const handleResult = (isEnabled: boolean) => {
+    console.log('Developer Options Enabled', isEnabled);
+    setIsDeveloperOptionsOn(isEnabled)
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text>isDeveloperOptionsEnabled: {String(isDeveloperOptionsOn)}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    width: 60,
+    height: 60,
+    marginVertical: 20,
+  },
+});
+
 ```
 
 ## Contributing
