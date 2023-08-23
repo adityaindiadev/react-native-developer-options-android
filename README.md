@@ -1,4 +1,4 @@
-# react-native-developer-options-android
+# @adityaindiadev/react-native-developer-options-android
 
 Check if the Android device has the developer options enabled.
 
