@@ -1,42 +1,33 @@
 import { NativeModules, Platform } from 'react-native';
 
-const LINKING_ERROR =
-  `The package 'react-native-developer-options-android' doesn't seem to be linked. Make sure: if automatic linking not working then try manual linking`;
+const LINKING_ERROR = `The package 'react-native-developer-options-android' doesn't seem to be linked. Make sure: if automatic linking not working then try manual linking`;
 
 const DeveloperOptionsAndroid = NativeModules.DeveloperOptionsAndroid
   ? NativeModules.DeveloperOptionsAndroid
   : new Proxy(
-    {},
-    {
-      get() {
-        throw new Error(LINKING_ERROR);
-      },
-    }
-  );
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
 
 function ifIOS(handleResult: CallableFunction) {
-
-  handleResult(false)
-
+  handleResult(false);
 }
 
-export async function isDeveloperOptionsEnabled(handleResult: CallableFunction) {
-  if (Platform.OS == 'android') {
-
-    console.log("DeveloperOptionsModule Start");
-
-
+export async function isDeveloperOptionsEnabled(
+  handleResult: CallableFunction
+) {
+  if (Platform.OS === 'android') {
     try {
       await DeveloperOptionsAndroid.isDeveloperOptionsEnabled(handleResult);
     } catch (error) {
       console.error(error);
-      // return false;
+      handleResult(false);
     }
-
-    console.log("DeveloperOptionsModule End");
-
-  }
-  else {
-    ifIOS(handleResult)
+  } else {
+    ifIOS(handleResult);
   }
 }
